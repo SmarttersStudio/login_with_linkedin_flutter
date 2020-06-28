@@ -1,4 +1,4 @@
-## example
+## flutter_linkedin
 
 - A Flutter Package to login and get Profile Details from linkedIn.
 
@@ -8,7 +8,7 @@
 - Get the clientId and clientSecret.
 - Register a redirectUrl ( It can be any valid url )
 
-####Initialize LinkedInLogin class
+#### Initialize LinkedInLogin class
 
 ```dart
   final String redirectUrl = 'https://smarttersstudio.com';
@@ -26,7 +26,7 @@
   }
 ```
 
-####Get The Token From LinkedIn
+#### Get The Token From LinkedIn
 
 ```dart
 	LinkedInLogin.loginForAccessToken(
@@ -41,7 +41,7 @@
 	});
 ```
 
-###Get Your Profile
+### Get Your Profile
 ```dart
 	LinkedInLogin.getProfile(
                 destroySession: true,
@@ -55,7 +55,7 @@
 	});
 ```
 
-###Get Your Email
+### Get Your Email
 ```dart
 	LinkedInLogin.getEmail(
                 destroySession: true,
@@ -68,6 +68,6 @@
                 	print(error.errorDescription);
 	});
 ```
-###Additional Information
+### Additional Information
 
 [Get The Full API Documentation from here](http://api.smarttersstudio.com/flutter_linkedin/ "Get The Full API Documentation from here")
