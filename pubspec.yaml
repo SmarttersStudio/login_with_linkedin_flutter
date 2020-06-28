@@ -1,6 +1,6 @@
 name: flutter_linkedin
 description: Flutter Package to login and get Profile Details from linkedin
-version: 1.0.1-dev.2
+version: 1.0.2
 homepage: https://smarttersstudio.com
 repository: https://github.com/SmarttersStudio/login_with_linkedin_flutter
 documentation: http://api.smarttersstudio.com/flutter_linkedin/

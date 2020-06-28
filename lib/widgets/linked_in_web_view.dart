@@ -9,8 +9,6 @@ import 'package:flutter_linkedin/data_model/auth_error_response.dart';
 import 'package:flutter_linkedin/data_model/auth_success_response.dart';
 import 'package:flutter_linkedin/helpers/authorization_helper.dart';
 
-
-
 class LinkedInWebView extends StatefulWidget {
   final String clientId, clientSecret, redirectUri;
   final bool destroySession;
@@ -59,20 +57,20 @@ class _LinkedInWebViewState extends State<LinkedInWebView> {
     _flutterWebviewPlugin.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
 //    print(widget.destroySession);
     return WebviewScaffold(
-        url: getAuthorizationUrl(
-          clientId: widget.clientId,
-          clientSecret: widget.clientSecret,
-          redirectUri: widget.redirectUri,
-        ),
-        appBar: widget.appBar,
-        clearCookies: widget.destroySession,
-        scrollBar: true,
-        hidden: true,
+      url: getAuthorizationUrl(
+        clientId: widget.clientId,
+        clientSecret: widget.clientSecret,
+        redirectUri: widget.redirectUri,
+      ),
+      appBar: widget.appBar,
+      clearCookies: widget.destroySession,
+      scrollBar: true,
+      hidden: true,
     );
   }
 }
