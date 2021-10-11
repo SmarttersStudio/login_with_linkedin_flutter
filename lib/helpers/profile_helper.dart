@@ -10,8 +10,8 @@ import 'package:flutter_linkedin/data_model/profile_response.dart';
 ///
 
 Future<LinkedInProfile> getProfileResponse(
-    {@required String accessToken}) async {
-  final response = await http.get(linkedInProfileUrl,
+    {required String accessToken}) async {
+  final response = await http.get(Uri.parse(linkedInProfileUrl),
       headers: {'Authorization': 'Bearer $accessToken'});
 
   if (response.statusCode == 200)

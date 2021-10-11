@@ -19,10 +19,10 @@ class LinkedInLogin {
 //  LinkedInLogin._internal();
   LinkedInLogin._();
   static void initialize(BuildContext context,
-      {@required String clientId,
-      @required String clientSecret,
-      @required String redirectUri,
-      String accessToken}) {
+      {required String clientId,
+      required String clientSecret,
+      required String redirectUri,
+      String? accessToken}) {
     _inst.context = context;
     _inst.clientId = clientId;
     _inst.clientSecret = clientSecret;
@@ -31,25 +31,25 @@ class LinkedInLogin {
   }
 
   /// Client id from LinkedIn to do something that I don't know.
-  String clientId;
+  late String clientId;
 
   /// Secret of your LinkedIn project that will be used by public users
-  String clientSecret;
+  late String clientSecret;
 
   /// If your authentication is success, then you will be redirected to a web page.
   /// But as we are Smarrters' we will pop out before you enter the web page.
-  String redirectUri;
+  late String redirectUri;
 
   /// Context is used for showDialog where we will show you a WebView
-  BuildContext context;
+  late BuildContext context;
 
   /// If you are more Smart than us and you have already an access token,
   /// then you can provide to authenticate or validate.
   /// Some dumbAss may not know that access token has a expiry
-  String accessToken;
+  String? accessToken;
 
   static Future<String> loginForAccessToken(
-      {PreferredSizeWidget appBar, bool destroySession = true}) {
+      {PreferredSizeWidget? appBar, bool destroySession = true}) {
     _checkInst();
     return _inst._loginForAccessToken(
         appBar: appBar, destroySession: destroySession);
@@ -62,15 +62,15 @@ class LinkedInLogin {
   }
 
   Future<String> _loginForAccessToken(
-      {PreferredSizeWidget appBar, bool destroySession = true}) async {
+      {PreferredSizeWidget? appBar, bool destroySession = true}) async {
     final authorizationData = await showDialog(
         context: context,
-        child: LinkedInWebView(
-          clientId: clientId,
-          clientSecret: clientSecret,
-          redirectUri: redirectUri,
-          destroySession: destroySession,
-        )).catchError((error) {
+        builder: (context) => LinkedInWebView(
+              clientId: clientId,
+              clientSecret: clientSecret,
+              redirectUri: redirectUri,
+              destroySession: destroySession,
+            )).catchError((error) {
       if (error is AuthorizationErrorResponse)
         throw error;
       else
@@ -90,14 +90,14 @@ class LinkedInLogin {
         else
           throw AuthorizationErrorResponse(errorDescription: error.toString());
       });
-      return accessToken;
+      return accessToken!;
     } else {
       throw (authorizationData as AuthorizationErrorResponse);
     }
   }
 
   static Future<LinkedInProfile> getProfile(
-      {PreferredSizeWidget appBar,
+      {PreferredSizeWidget? appBar,
       bool destroySession = true,
       bool forceLogin = false}) async {
     _checkInst();
@@ -106,12 +106,12 @@ class LinkedInLogin {
   }
 
   Future<LinkedInProfile> _getProfile(
-      {PreferredSizeWidget appBar,
+      {PreferredSizeWidget? appBar,
       bool destroySession = true,
       bool forceLogin = false}) async {
     if (accessToken == null || forceLogin)
       await loginForAccessToken(destroySession: destroySession, appBar: appBar);
-    return await getProfileResponse(accessToken: accessToken)
+    return await getProfileResponse(accessToken: accessToken!)
         .catchError((error) {
       if (error is AuthorizationErrorResponse)
         throw error;
@@ -121,7 +121,7 @@ class LinkedInLogin {
   }
 
   static Future<LinkedInEmail> getEmail(
-      {PreferredSizeWidget appBar,
+      {PreferredSizeWidget? appBar,
       bool destroySession = true,
       bool forceLogin = false}) {
     _checkInst();
@@ -130,12 +130,13 @@ class LinkedInLogin {
   }
 
   Future<LinkedInEmail> _getEmail(
-      {PreferredSizeWidget appBar,
+      {PreferredSizeWidget? appBar,
       bool destroySession = true,
       bool forceLogin = false}) async {
     if (accessToken == null || forceLogin)
       await loginForAccessToken(destroySession: destroySession, appBar: appBar);
-    return await getEmailResponse(accessToken: accessToken).catchError((error) {
+    return await getEmailResponse(accessToken: accessToken!)
+        .catchError((error) {
       if (error is AuthorizationErrorResponse)
         throw error;
       else

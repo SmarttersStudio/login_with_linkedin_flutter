@@ -6,13 +6,13 @@ repository: https://github.com/SmarttersStudio/login_with_linkedin_flutter
 documentation: http://api.smarttersstudio.com/flutter_linkedin/
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.1
-  flutter_webview_plugin: ^0.3.11
+  http: ^0.13.4
+  webview_flutter: ^2.1.1
 
 dev_dependencies:
   flutter_test:

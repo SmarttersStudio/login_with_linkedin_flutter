@@ -14,7 +14,7 @@ String linkedInEmailToJson(LinkedInEmail data) => json.encode(data.toJson());
 
 class LinkedInEmail {
   LinkedInEmail({
-    this.elements,
+    this.elements=const[],
   });
 
   List<Element> elements;
@@ -35,8 +35,8 @@ class Element {
     this.handle,
   });
 
-  Handle elementHandle;
-  String handle;
+  Handle? elementHandle;
+  String? handle;
 
   factory Element.fromJson(Map<String, dynamic> json) => Element(
         elementHandle: Handle.fromJson(json["handle~"]),
@@ -44,7 +44,7 @@ class Element {
       );
 
   Map<String, dynamic> toJson() => {
-        "handle~": elementHandle.toJson(),
+        "handle~": elementHandle?.toJson(),
         "handle": handle,
       };
 }
@@ -54,7 +54,7 @@ class Handle {
     this.emailAddress,
   });
 
-  String emailAddress;
+  String? emailAddress;
 
   factory Handle.fromJson(Map<String, dynamic> json) => Handle(
         emailAddress: json["emailAddress"],

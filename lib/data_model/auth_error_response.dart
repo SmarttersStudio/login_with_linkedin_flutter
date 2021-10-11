@@ -12,7 +12,7 @@ String authorizationErrorResponseToJson(AuthorizationErrorResponse data) =>
 class AuthorizationErrorResponse {
   AuthorizationErrorResponse(
       {this.error = LinkedInAuthErrorType.other,
-      this.errorDescription,
+      this.errorDescription = '',
       this.status = 400});
 
   LinkedInAuthErrorType error;

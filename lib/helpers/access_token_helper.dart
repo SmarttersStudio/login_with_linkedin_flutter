@@ -10,10 +10,10 @@ import 'package:flutter_linkedin/data_model/auth_error_response.dart';
 ///
 
 String getAccessTokenUrl({
-  @required String clientId,
-  @required String clientSecret,
-  @required String redirectUri,
-  @required String code,
+  required String clientId,
+  required String clientSecret,
+  required String redirectUri,
+  required String code,
   String grantType = 'authorization_code',
 }) {
   return '$linkedInAccessTokenUrl?'
@@ -25,17 +25,17 @@ String getAccessTokenUrl({
 }
 
 Future<String> getAccessToken({
-  @required String clientId,
-  @required String clientSecret,
-  @required String redirectUri,
-  @required String code,
+  required String clientId,
+  required String clientSecret,
+  required String redirectUri,
+  required String code,
   String grantType = 'code',
 }) async {
-  final response = await http.get(getAccessTokenUrl(
+  final response = await http.get(Uri.parse(getAccessTokenUrl(
       clientId: clientId,
       clientSecret: clientSecret,
       redirectUri: redirectUri,
-      code: code));
+      code: code)));
 
   if (response.statusCode == 200)
     return (json.decode(response.body))['access_token'];

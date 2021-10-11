@@ -6,9 +6,9 @@ import 'package:flutter_linkedin/config/api_routes.dart';
 ///
 
 String getAuthorizationUrl(
-    {@required String clientId,
-    @required String clientSecret,
-    @required String redirectUri,
+    {required String clientId,
+    required String clientSecret,
+    required String redirectUri,
     String responseType = 'code',
     String state = 'DCEeFWf45A53sdfKef424',
     String scope = 'r_liteprofile%20r_emailaddress'}) {

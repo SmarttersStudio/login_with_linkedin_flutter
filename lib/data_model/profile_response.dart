@@ -18,12 +18,12 @@ class LinkedInProfile {
     this.firstName,
     this.lastName,
     this.profilePicture,
-    this.id,
+    required this.id,
   });
 
-  StName firstName;
-  StName lastName;
-  ProfilePicture profilePicture;
+  StName? firstName;
+  StName? lastName;
+  ProfilePicture? profilePicture;
   String id;
 
   factory LinkedInProfile.fromJson(Map<String, dynamic> json) =>
@@ -35,9 +35,9 @@ class LinkedInProfile {
       );
 
   Map<String, dynamic> toJson() => {
-        "firstName": firstName.toJson(),
-        "lastName": lastName.toJson(),
-        "profilePicture": profilePicture.toJson(),
+        "firstName": firstName?.toJson(),
+        "lastName": lastName?.toJson(),
+        "profilePicture": profilePicture?.toJson(),
         "id": id,
       };
 }
@@ -48,8 +48,8 @@ class StName {
     this.preferredLocale,
   });
 
-  Localized localized;
-  PreferredLocale preferredLocale;
+  Localized? localized;
+  PreferredLocale? preferredLocale;
 
   factory StName.fromJson(Map<String, dynamic> json) => StName(
         localized: Localized.fromJson(json["localized"]),
@@ -57,14 +57,14 @@ class StName {
       );
 
   Map<String, dynamic> toJson() => {
-        "localized": localized.toJson(),
-        "preferredLocale": preferredLocale.toJson(),
+        "localized": localized?.toJson(),
+        "preferredLocale": preferredLocale?.toJson(),
       };
 }
 
 class Localized {
   Localized({
-    this.enUs,
+    required this.enUs,
   });
 
   String enUs;
@@ -80,8 +80,8 @@ class Localized {
 
 class PreferredLocale {
   PreferredLocale({
-    this.country,
-    this.language,
+    required this.country,
+    required this.language,
   });
 
   String country;
@@ -101,12 +101,12 @@ class PreferredLocale {
 
 class ProfilePicture {
   ProfilePicture({
-    this.displayImage,
+    required this.displayImage,
     this.profilePictureDisplayImage,
   });
 
   String displayImage;
-  DisplayImage profilePictureDisplayImage;
+  DisplayImage? profilePictureDisplayImage;
 
   factory ProfilePicture.fromJson(Map<String, dynamic> json) => ProfilePicture(
         displayImage: json["displayImage"],
@@ -116,17 +116,17 @@ class ProfilePicture {
 
   Map<String, dynamic> toJson() => {
         "displayImage": displayImage,
-        "displayImage~": profilePictureDisplayImage.toJson(),
+        "displayImage~": profilePictureDisplayImage?.toJson(),
       };
 }
 
 class DisplayImage {
   DisplayImage({
     this.paging,
-    this.elements,
+    this.elements = const [],
   });
 
-  Paging paging;
+  Paging? paging;
   List<Element> elements;
 
   factory DisplayImage.fromJson(Map<String, dynamic> json) => DisplayImage(
@@ -136,22 +136,22 @@ class DisplayImage {
       );
 
   Map<String, dynamic> toJson() => {
-        "paging": paging.toJson(),
+        "paging": paging?.toJson(),
         "elements": List<dynamic>.from(elements.map((x) => x.toJson())),
       };
 }
 
 class Element {
   Element({
-    this.artifact,
-    this.authorizationMethod,
+    required this.artifact,
+    required this.authorizationMethod,
     this.data,
-    this.identifiers,
+    this.identifiers = const [],
   });
 
   String artifact;
   String authorizationMethod;
-  Data data;
+  Data? data;
   List<Identifier> identifiers;
 
   factory Element.fromJson(Map<String, dynamic> json) => Element(
@@ -165,7 +165,7 @@ class Element {
   Map<String, dynamic> toJson() => {
         "artifact": artifact,
         "authorizationMethod": authorizationMethod,
-        "data": data.toJson(),
+        "data": data?.toJson(),
         "identifiers": List<dynamic>.from(identifiers.map((x) => x.toJson())),
       };
 }
@@ -175,7 +175,7 @@ class Data {
     this.comLinkedinDigitalmediaMediaartifactStillImage,
   });
 
-  ComLinkedInDigitalMediaMediaArtifactStillImage
+  ComLinkedInDigitalMediaMediaArtifactStillImage?
       comLinkedinDigitalmediaMediaartifactStillImage;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
@@ -186,7 +186,7 @@ class Data {
 
   Map<String, dynamic> toJson() => {
         "com.linkedin.digitalmedia.mediaartifact.StillImage":
-            comLinkedinDigitalmediaMediaartifactStillImage.toJson(),
+            comLinkedinDigitalmediaMediaartifactStillImage?.toJson(),
       };
 }
 
@@ -200,12 +200,12 @@ class ComLinkedInDigitalMediaMediaArtifactStillImage {
     this.displayAspectRatio,
   });
 
-  String mediaType;
-  RawCodecSpec rawCodecSpec;
-  DisplaySize displaySize;
-  StorageSize storageSize;
-  AspectRatio storageAspectRatio;
-  AspectRatio displayAspectRatio;
+  String? mediaType;
+  RawCodecSpec? rawCodecSpec;
+  DisplaySize? displaySize;
+  StorageSize? storageSize;
+  AspectRatio? storageAspectRatio;
+  AspectRatio? displayAspectRatio;
 
   factory ComLinkedInDigitalMediaMediaArtifactStillImage.fromJson(
           Map<String, dynamic> json) =>
@@ -220,11 +220,11 @@ class ComLinkedInDigitalMediaMediaArtifactStillImage {
 
   Map<String, dynamic> toJson() => {
         "mediaType": mediaType,
-        "rawCodecSpec": rawCodecSpec.toJson(),
-        "displaySize": displaySize.toJson(),
-        "storageSize": storageSize.toJson(),
-        "storageAspectRatio": storageAspectRatio.toJson(),
-        "displayAspectRatio": displayAspectRatio.toJson(),
+        "rawCodecSpec": rawCodecSpec?.toJson(),
+        "displaySize": displaySize?.toJson(),
+        "storageSize": storageSize?.toJson(),
+        "storageAspectRatio": storageAspectRatio?.toJson(),
+        "displayAspectRatio": displayAspectRatio?.toJson(),
       };
 }
 
@@ -235,9 +235,9 @@ class AspectRatio {
     this.formatted,
   });
 
-  double widthAspect;
-  double heightAspect;
-  String formatted;
+  double? widthAspect;
+  double? heightAspect;
+  String? formatted;
 
   factory AspectRatio.fromJson(Map<String, dynamic> json) => AspectRatio(
         widthAspect: double.parse(json["widthAspect"].toString()),
@@ -259,9 +259,9 @@ class DisplaySize {
     this.height,
   });
 
-  double width;
-  String uom;
-  double height;
+  double? width;
+  String? uom;
+  double? height;
 
   factory DisplaySize.fromJson(Map<String, dynamic> json) => DisplaySize(
         width: double.parse(json["width"].toString()),
@@ -282,8 +282,8 @@ class RawCodecSpec {
     this.type,
   });
 
-  String name;
-  String type;
+  String? name;
+  String? type;
 
   factory RawCodecSpec.fromJson(Map<String, dynamic> json) => RawCodecSpec(
         name: json["name"],
@@ -302,8 +302,8 @@ class StorageSize {
     this.height,
   });
 
-  double width;
-  double height;
+  double? width;
+  double? height;
 
   factory StorageSize.fromJson(Map<String, dynamic> json) => StorageSize(
         width: double.parse(json["width"].toString()),
@@ -326,12 +326,12 @@ class Identifier {
     this.identifierExpiresInSeconds,
   });
 
-  String identifier;
-  int index;
-  String mediaType;
-  String file;
-  String identifierType;
-  int identifierExpiresInSeconds;
+  String? identifier;
+  int? index;
+  String? mediaType;
+  String? file;
+  String? identifierType;
+  int? identifierExpiresInSeconds;
 
   factory Identifier.fromJson(Map<String, dynamic> json) => Identifier(
         identifier: json["identifier"],
@@ -356,11 +356,11 @@ class Paging {
   Paging({
     this.count,
     this.start,
-    this.links,
+    this.links = const [],
   });
 
-  int count;
-  int start;
+  int? count;
+  int? start;
   List<dynamic> links;
 
   factory Paging.fromJson(Map<String, dynamic> json) => Paging(

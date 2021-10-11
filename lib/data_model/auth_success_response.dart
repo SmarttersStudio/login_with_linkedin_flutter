@@ -12,8 +12,8 @@ String authorizationSuccessResponseToJson(AuthorizationSuccessResponse data) =>
 
 class AuthorizationSuccessResponse {
   AuthorizationSuccessResponse({
-    this.code,
-    this.state,
+    this.code = '',
+    this.state = '',
   });
 
   String code;

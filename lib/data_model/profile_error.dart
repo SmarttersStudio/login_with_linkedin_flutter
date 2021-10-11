@@ -14,9 +14,9 @@ String profileErrorToJson(ProfileError data) => json.encode(data.toJson());
 
 class ProfileError {
   ProfileError({
-    this.serviceErrorCode,
-    this.message,
-    this.status,
+    this.serviceErrorCode = 1,
+    this.message = "",
+    this.status = 1,
   });
 
   int serviceErrorCode;
