@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:loginwithlinkedin/linked_with_login/config/api_routes.dart';
+import 'package:flutter_linkedin/linked_with_login/config/api_routes.dart';
 import 'package:http/http.dart' as http;
-import 'package:loginwithlinkedin/linked_with_login/data_model/auth_error_response.dart';
-import 'package:loginwithlinkedin/linked_with_login/data_model/profile_error.dart';
-import 'package:loginwithlinkedin/linked_with_login/data_model/profile_response.dart';
+import 'package:flutter_linkedin/linked_with_login/data_model/auth_error_response.dart';
+import 'package:flutter_linkedin/linked_with_login/data_model/profile_error.dart';
+import 'package:flutter_linkedin/linked_with_login/data_model/profile_response.dart';
 
 ///
 /// Created By Guru (guru@smarttersstudio.com) on 28/06/20 12:54 PM
@@ -12,10 +12,10 @@ import 'package:loginwithlinkedin/linked_with_login/data_model/profile_response.
 
 
 Future<LinkedInProfile> getProfileResponse({
-    @required String accessToken
+    required String accessToken
 }) async{
     
-    final response = await http.get(linkedInProfileUrl,headers: {
+    final response = await http.get(Uri.parse(linkedInProfileUrl),headers: {
         'Authorization': 'Bearer $accessToken'
     });
     

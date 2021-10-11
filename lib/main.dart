@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginwithlinkedin/linked_with_login/helpers/linked_in_login_helper.dart';
+import 'package:flutter_linkedin/linked_with_login/helpers/linked_in_login_helper.dart';
 
 void main() {
     runApp(MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-    MyHomePage({Key key, this.title}) : super(key: key);
+    MyHomePage({Key? key, this.title=""}) : super(key: key);
     
     final String title;
     
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final String redirectUrl = 'https://app.carde.de';
     final String clientId = '78el5r2y1dwp4j';
     final String clientSecret = 'RnyXiCNz3cahNx1g';
-    LinkedInLogin _linkedInLogin ;
+    late LinkedInLogin _linkedInLogin ;
     
     @override
     void initState() {

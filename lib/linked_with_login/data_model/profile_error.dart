@@ -18,9 +18,9 @@ class ProfileError {
         this.status,
     });
     
-    int serviceErrorCode;
-    String message;
-    int status;
+    int? serviceErrorCode;
+    String? message;
+    int? status;
     
     factory ProfileError.fromJson(Map<String, dynamic> json) => ProfileError(
         serviceErrorCode: json["serviceErrorCode"],
